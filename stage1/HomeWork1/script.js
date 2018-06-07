@@ -37,12 +37,17 @@ function return_object(func, ...arg) {
 		var key = arg;
 		var obj = {}
 		var arr = func.apply(this);
-
-		for(var i = 0; i < key.length; i++) {
-			obj[key[i]] = arr[i];
+		if (Array.isArray(arr)) {
+			for(var i = 0; i < key.length; i++) {
+				obj[key[i]] = arr[i];
+			}
+			return obj;
+		} else {
+			return arr;
 		}
+		
 		// console.log(obj);
-		return obj;
+		
 		// var key = func(...arg);
 		
 		// console.log(...arg);
