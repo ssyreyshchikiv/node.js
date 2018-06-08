@@ -24,14 +24,20 @@ fs.readFile("data.txt", function(err, data) {
 		}
 	});
 	dataMod = dataMod.join(" ");
-	fs.writeFile("out-1.txt", dataMod);
+
+	fs.writeFile("out-1.txt", dataMod, function(err, data) {
+		if(err) throw err;
+	});
 	// console.log(dataMod);
 
 	var dataPow = arr.map(function(x) {
 		return x**3;
 	});
 	dataPow = dataPow.join(" ");
-	fs.writeFile("out-2.txt", dataPow);
+
+	fs.writeFile("out-2.txt", dataPow, function(err, data) {
+		if(err) throw err;
+	});
 
 	// console.log(dataPow);
 	// console.log(arr);
