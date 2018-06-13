@@ -1,0 +1,14 @@
+.vidjet {
+	position: absolute;
+	width: 250px;
+	height: 150px;
+	border: 3px solid yellowgreen;
+	border-radius: 25px;
+	right: 0;
+	top: 0;
+	font-size: 16px;
+	color: grey;
+	font-style: italic;
+	text-align: center;
+	padding-top: 40px;
+}
