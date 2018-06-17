@@ -39,6 +39,8 @@
 
 var express = require("express");
 var mustacheExpress = require('mustache-express');
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({extended: false});
 var app = express();
 
 	app.set('views', __dirname + '/views');
@@ -50,4 +52,14 @@ app.listen(3000);
 
 app.use(express.static("public"));
 
-app.use("/user", myRouter);
+// app.use("/user",  function(req, res, next) {
+// 	next();
+// });
+
+app.post('/user/add',urlencodedParser, function(req, res, next) {
+ 	var title = JSON.stringify(req.body);
+	var event = JSON.parse(title);
+	console.log(event);
+	console.log('Параметры POST запроса: ' + event);
+	res.render('index', event);
+});

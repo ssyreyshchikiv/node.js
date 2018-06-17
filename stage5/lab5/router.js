@@ -39,21 +39,4 @@
 
 // Задача 3
 
-var express = require("express");
-var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({extended: false});
-
-var router = express.Router();
-
-
-router.post('/add',urlencodedParser, function(req, res, next) {
-	
-	var title = JSON.stringify(req.body);
-	var event = JSON.parse(title);
-	console.log(event);
-	console.log('Параметры POST запроса: ' + event);
-});
-
-
-
-module.exports = router;
+// -
