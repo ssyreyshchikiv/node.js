@@ -39,4 +39,20 @@
 
 // Задача 3
 
-// -
+ var express = require("express");
+ var router = express.Router();
+
+ router.post('/add', function(req, res, next) {
+ 	var user = req.body;
+ 	console.log(user);
+ 	var login = req.body.login;	
+ 	var password = req.body.password;
+ 	var email = req.body.email;
+ 	console.log(email);
+ 	res.render("index", {login: `${login} - зарегистрирован новый пользователь`, password: `${password}`, email: `${email}`});
+ 	
+
+ });
+
+ module.exports = router;
+

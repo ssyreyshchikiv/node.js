@@ -37,29 +37,55 @@
 // Получите данные из POST формы (задача 2) и сгенерируйте HTML шаблон уведомления о 
 // регистрации с помощью шаблонизатора mustache 
 
+// var express = require("express");
+// var mustacheExpress = require('mustache-express');
+// var bodyParser = require('body-parser');
+// var urlencodedParser = bodyParser.urlencoded({extended: false});
+// var app = express();
+
+// 	app.set('views', __dirname + '/views');
+// 	app.engine('mustache', mustacheExpress());
+// 	app.set('view engine', 'mustache');
+
+// var myRouter = require("./router.js");
+// app.listen(3000);
+
+// app.use(express.static("public"));
+
+// // app.use("/user",  function(req, res, next) {
+// // 	next();
+// // });
+
+// app.post('/user/add',urlencodedParser, function(req, res, next) {
+//  	var title = JSON.stringify(req.body);
+// 	var event = JSON.parse(title);
+// 	console.log(event);
+// 	console.log('Параметры POST запроса: ' + event);
+// 	res.render('index', event);
+// });
+
 var express = require("express");
-var mustacheExpress = require('mustache-express');
-var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({extended: false});
+var bodyParser = require("body-parser")
+var mustacheExpress = require("mustache-express");
 var app = express();
 
-	app.set('views', __dirname + '/views');
-	app.engine('mustache', mustacheExpress());
-	app.set('view engine', 'mustache');
+app.set('views', __dirname + '/views');
+app.engine('mustache', mustacheExpress());
+app.set('view engine', 'mustache');
+
+// app.use(express.json());
+// app.use(express.urlencoded());
+app.use(bodyParser.urlencoded({extended: false}));
 
 var myRouter = require("./router.js");
 app.listen(3000);
 
 app.use(express.static("public"));
 
-// app.use("/user",  function(req, res, next) {
-// 	next();
-// });
+app.use("/user", myRouter);
 
-app.post('/user/add',urlencodedParser, function(req, res, next) {
- 	var title = JSON.stringify(req.body);
-	var event = JSON.parse(title);
-	console.log(event);
-	console.log('Параметры POST запроса: ' + event);
-	res.render('index', event);
-});
+
+
+
+
+
