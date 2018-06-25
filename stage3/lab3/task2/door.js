@@ -1,7 +1,10 @@
+var http = require("http");
 var url = require("url");
 
-process.on('message', function(req) { 
-var _get = url.parse(req, true).query;
- 	process.send(_get);
-});
+let server = http.createServer().listen(8080);
 
+
+server.on("request", function(req, res) {
+  process.send(url.parse(req.url, true).query.code);
+  server.close();
+});
